@@ -809,10 +809,19 @@
       overflow-wrap: anywhere;
     }
 
+    .contact-value a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .contact-reveal .button {
       min-height: 38px;
       padding: 8px 12px;
       font-size: 0.9rem;
+    }
+
+    .contact-reveal.is-revealed .button {
+      display: none;
     }
 
     .steps {
@@ -1057,6 +1066,120 @@
 
       section {
         padding: 76px 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--container));
+      }
+
+      section {
+        padding: 46px 0;
+      }
+
+      h1 {
+        font-size: clamp(2.35rem, 13vw, 4.1rem);
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, 9vw, 2.35rem);
+        overflow-wrap: anywhere;
+      }
+
+      .lead,
+      .section-head p {
+        font-size: 1rem;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-copy {
+        margin-top: 0;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        display: grid;
+      }
+
+      .hero-actions .button,
+      .cta-actions .button {
+        width: 100%;
+      }
+
+      .card,
+      .price-card,
+      .contact-note,
+      .download-card,
+      .preview-copy {
+        padding: 18px;
+      }
+
+      .contact-note p {
+        line-height: 1.55;
+      }
+
+      .contact-reveal {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 8px;
+        overflow: hidden;
+      }
+
+      .contact-label {
+        font-size: 1rem;
+      }
+
+      .contact-value {
+        display: block;
+        max-width: 100%;
+        font-size: clamp(1rem, 5.4vw, 1.32rem);
+        line-height: 1.35;
+        word-break: break-word;
+      }
+
+      .contact-reveal .button {
+        width: 100%;
+        min-height: 44px;
+        margin-top: 4px;
+      }
+
+      .video-item .button {
+        width: 100%;
+      }
+
+      .price-top {
+        min-height: auto;
+      }
+
+      .badge-row {
+        min-height: 0;
+      }
+
+      .modal-nav {
+        top: auto;
+        bottom: 18px;
+        transform: none;
+      }
+
+      .modal-nav:hover {
+        transform: scale(1.04);
+      }
+
+      .modal-prev {
+        left: 18px;
+      }
+
+      .modal-next {
+        right: 18px;
+      }
+
+      .modal-count {
+        bottom: 30px;
       }
     }
   </style>
@@ -1840,6 +1963,7 @@
         }
 
         button.disabled = true;
+        button.closest(".contact-reveal").classList.add("is-revealed");
       });
     });
 
