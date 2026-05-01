@@ -1,0 +1,1899 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Khóa học MOS Excel 365 Specialist | Dhouse Data</title>
+  <meta name="description" content="Khóa học MOS Excel 365 Specialist miễn phí trên YouTube dành cho người Việt ở Nhật. Có gói file luyện tập tùy chọn để học thuận tiện hơn.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --surface-soft: #f4efe7;
+      --text: #24211d;
+      --muted: #686159;
+      --line: #e6ded3;
+      --accent: #537d72;
+      --accent-dark: #365e55;
+      --accent-soft: #e6f0ec;
+      --warm: #b27643;
+      --shadow: 0 18px 48px rgba(56, 45, 34, 0.08);
+      --radius: 8px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.is-locked {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251, 250, 247, 0.92);
+      border-bottom: 1px solid rgba(230, 222, 211, 0.75);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 70px;
+      gap: 18px;
+      padding-left: 52px;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1.2;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 650;
+    }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav a:hover {
+      color: var(--accent-dark);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-button {
+      position: fixed;
+      top: 14px;
+      left: 16px;
+      z-index: 120;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 28px rgba(56, 45, 34, 0.08);
+    }
+
+    .menu-button span {
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-button span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-button span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-button.is-open span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .menu-button.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.is-open span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 110;
+      width: 100%;
+      min-height: auto;
+      display: grid;
+      gap: 6px;
+      padding: 82px 20px 18px;
+      background: rgba(251, 250, 247, 0.96);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 24px 80px rgba(56, 45, 34, 0.14);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-14px);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    }
+
+    .mobile-nav::before {
+      content: "";
+      position: absolute;
+      inset: 70px 20px 16px;
+      z-index: -1;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 18px 46px rgba(56, 45, 34, 0.08);
+    }
+
+    .mobile-nav.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 11px 14px;
+      margin: 0 1px;
+      color: var(--text);
+      border-bottom: 0;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 720;
+    }
+
+    .mobile-nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    .nav-backdrop {
+      display: none;
+    }
+
+    .nav-backdrop.is-open {
+      display: none;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 700;
+      line-height: 1.2;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .button-secondary {
+      background: var(--surface);
+      border-color: var(--line);
+      color: var(--accent-dark);
+    }
+
+    .button-secondary:hover {
+      border-color: #cbbfaa;
+      background: #fffdf9;
+    }
+
+    .button-small {
+      min-height: 40px;
+      padding: 9px 14px;
+      font-size: 0.92rem;
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .hero {
+      padding: 64px 0 52px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin-top: 18px;
+      max-width: 780px;
+      font-size: clamp(2.25rem, 7vw, 4.8rem);
+      font-weight: 790;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 5vw, 2.65rem);
+      font-weight: 780;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 760;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-top: 18px;
+      font-size: clamp(1.05rem, 2.6vw, 1.24rem);
+      color: #4d4740;
+    }
+
+    .hero-actions,
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent);
+      color: #5c554c;
+      font-size: 0.98rem;
+    }
+
+    .hero-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .hero-panel h2 {
+      font-size: 1.22rem;
+    }
+
+    .check-list,
+    .plain-list {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li,
+    .plain-list li {
+      position: relative;
+      padding-left: 28px;
+      color: #49433c;
+    }
+
+    .check-list li::before,
+    .plain-list li::before {
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .check-list li::before {
+      content: "✓";
+    }
+
+    .plain-list li::before {
+      content: "•";
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .section-head p {
+      margin-top: 12px;
+      font-size: 1.03rem;
+    }
+
+    .soft-section {
+      background: var(--surface-soft);
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .card:hover,
+    .video-item:hover,
+    .price-card:hover,
+    .preview-frame:hover {
+      transform: translateY(-3px);
+      border-color: rgba(83, 125, 114, 0.36);
+      box-shadow: 0 14px 34px rgba(56, 45, 34, 0.07);
+    }
+
+    .card p {
+      margin-top: 8px;
+    }
+
+    .problem-card {
+      display: grid;
+      gap: 14px;
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .split {
+      display: grid;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .note-box {
+      padding: 20px;
+      background: #fffaf1;
+      border: 1px solid #ead8bd;
+      border-radius: var(--radius);
+      color: #57483a;
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .price-card.featured {
+      border-color: rgba(83, 125, 114, 0.48);
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 750;
+      line-height: 1.2;
+    }
+
+    .price-top {
+      display: grid;
+      gap: 8px;
+      min-height: 150px;
+      align-content: start;
+    }
+
+    .badge-row {
+      min-height: 28px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .price-card .button {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .plan-section {
+      display: grid;
+      gap: 8px;
+    }
+
+    .plan-section-title {
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 780;
+    }
+
+    .contact-note {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .video-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .video-item {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .video-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-dark);
+      font-size: 0.88rem;
+      font-weight: 740;
+    }
+
+    .video-item .button {
+      width: fit-content;
+      min-height: 38px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+
+    .video-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .video-title strong {
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .video-title span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .preview-gallery {
+      display: grid;
+      gap: 16px;
+    }
+
+    .preview-frame {
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .preview-button {
+      width: 100%;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: zoom-in;
+    }
+
+    .preview-image,
+    .preview-thumb-image {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #f5f2ec;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .preview-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: transform 220ms ease;
+    }
+
+    .preview-frame:hover img {
+      transform: scale(1.025);
+    }
+
+    .preview-copy {
+      padding: 18px;
+    }
+
+    .preview-copy p {
+      margin-top: 8px;
+    }
+
+    .preview-thumbs {
+      display: grid;
+      gap: 16px;
+    }
+
+    .download-layout {
+      display: grid;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .download-cover {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .download-cover img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .download-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .download-card {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .download-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(83, 125, 114, 0.36);
+      box-shadow: 0 14px 34px rgba(56, 45, 34, 0.07);
+    }
+
+    .download-card .button {
+      width: 100%;
+    }
+
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(22, 20, 18, 0.82);
+    }
+
+    .image-modal.is-open {
+      display: flex;
+    }
+
+    .image-modal img {
+      max-width: min(100%, 1200px);
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 210;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 45;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--accent-dark);
+      font-size: 1.1rem;
+      font-weight: 800;
+      box-shadow: 0 12px 32px rgba(56, 45, 34, 0.12);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease, background 180ms ease;
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .contact-note p {
+      margin-top: 6px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-reveal {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .contact-label {
+      color: var(--text);
+      font-weight: 740;
+    }
+
+    .contact-value {
+      color: var(--accent-dark);
+      font-weight: 720;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-reveal .button {
+      min-height: 38px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+
+    .steps {
+      counter-reset: steps;
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      color: #49433c;
+    }
+
+    .steps li::before {
+      content: counter(steps);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-weight: 740;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .faq-question span {
+      flex: 1;
+    }
+
+    .faq-icon {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 18px 18px;
+    }
+
+    .faq-item.is-open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.is-open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .final-cta {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .final-cta p {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .final-cta .button-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.48);
+      color: #ffffff;
+    }
+
+    .final-cta .button-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.72);
+    }
+
+    .modal-nav {
+      position: fixed;
+      top: 50%;
+      z-index: 210;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 1.7rem;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .modal-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .modal-prev {
+      left: 16px;
+    }
+
+    .modal-next {
+      right: 16px;
+    }
+
+    .modal-count {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 210;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      font-size: 0.9rem;
+      transform: translateX(-50%);
+    }
+
+    .site-footer {
+      padding: 28px 0;
+      background: #28231e;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 16px;
+    }
+
+    .footer-title {
+      color: #ffffff;
+      font-weight: 780;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.94rem;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    @media (min-width: 760px) {
+      .container {
+        width: min(100% - 56px, var(--container));
+      }
+
+      .hero {
+        padding: 86px 0 70px;
+      }
+
+      .hero-grid,
+      .split {
+        grid-template-columns: 1.25fr 0.75fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3,
+      .pricing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .preview-thumbs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .download-layout {
+        grid-template-columns: 0.45fr 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .nav,
+      .header-cta {
+        display: inline-flex;
+      }
+
+      .header-inner {
+        padding-left: 0;
+      }
+
+      .menu-button {
+        display: none;
+      }
+
+      .mobile-nav,
+      .mobile-nav.is-open {
+        display: none;
+      }
+
+      .nav-backdrop,
+      .nav-backdrop.is-open {
+        display: none;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Dhouse Data MOS Excel 365">
+          Dhouse Data
+          <span>MOS Excel 365</span>
+        </a>
+
+        <nav class="nav" aria-label="Điều hướng chính">
+          <a href="#course">Khóa học</a>
+          <a href="#videos">Video</a>
+          <a href="#free-docs">Tài liệu</a>
+          <a href="#packages">Gói hỗ trợ</a>
+          <a href="#study">Cách học</a>
+          <a href="#contact">Liên hệ</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="button button-primary button-small header-cta" href="https://www.youtube.com/playlist?list=PL4TdnaJfJVapdLZn9W_fpwvWffs1cn6sD">Xem khóa học miễn phí</a>
+          <button class="menu-button" type="button" aria-label="Mở menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" aria-label="Điều hướng trên điện thoại">
+        <a href="#course">Khóa học</a>
+        <a href="#videos">Video</a>
+        <a href="#free-docs">Tài liệu</a>
+        <a href="#packages">Gói hỗ trợ</a>
+        <a href="#study">Cách học</a>
+        <a href="#contact">Liên hệ</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://www.youtube.com/playlist?list=PL4TdnaJfJVapdLZn9W_fpwvWffs1cn6sD">Xem khóa học miễn phí</a>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-close-menu></div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Khóa học miễn phí trên YouTube</p>
+          <h1>Học MOS Excel 365 bằng tiếng Việt, dành cho người Việt ở Nhật</h1>
+          <p class="lead">Khóa học giúp bạn làm quen với Excel và chuẩn bị cho kỳ thi MOS Excel 365 Specialist tại Nhật, kể cả khi bạn chưa thật sự tự tin với tiếng Nhật.</p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://www.youtube.com/playlist?list=PL4TdnaJfJVapdLZn9W_fpwvWffs1cn6sD">Xem khóa học miễn phí</a>
+            <a class="button button-secondary" href="#packages">Xem gói file luyện tập</a>
+          </div>
+
+          <p class="hero-note">Bạn có thể học toàn bộ khóa học miễn phí. Các gói tài liệu bên dưới chỉ là phần hỗ trợ thêm nếu bạn muốn luyện tập thuận tiện hơn.</p>
+        </div>
+
+        <aside class="hero-panel" aria-label="Điểm chính của khóa học">
+          <h2>Điểm chính</h2>
+          <ul class="check-list">
+            <li>Học miễn phí qua YouTube.</li>
+            <li>Bám sát dạng câu hỏi MOS Excel 365.</li>
+            <li>Có file luyện tập nếu bạn muốn thực hành nhanh hơn.</li>
+            <li>Phù hợp cho người Việt đang sống, học tập hoặc làm việc tại Nhật.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="container split">
+        <div class="section-head">
+          <h2>Bạn muốn thi MOS Excel ở Nhật nhưng thấy hơi khó bắt đầu?</h2>
+          <p>Nhiều bạn không ngại học Excel, chỉ là chưa biết nên bắt đầu từ đâu, luyện dạng câu hỏi nào và làm sao để quen với đề thi bằng tiếng Nhật.</p>
+        </div>
+
+        <div class="problem-card">
+          <ul class="plain-list">
+            <li>Câu hỏi thi bằng tiếng Nhật nên dễ bị ngại lúc mới học.</li>
+            <li>Biết Excel một chút nhưng chưa rõ MOS thường hỏi kiểu gì.</li>
+            <li>Muốn luyện tập nhưng chưa có file phù hợp để làm theo.</li>
+            <li>Xem video thì hiểu, nhưng tự làm lại thì đôi khi dễ quên thao tác.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="course">
+      <div class="container">
+        <div class="section-head">
+          <h2>Khóa học này có gì?</h2>
+          <p>Khóa học tập trung vào thao tác thực tế. Bạn sẽ học bằng cách làm trực tiếp trên Excel, giống với cách bài thi MOS yêu cầu.</p>
+        </div>
+
+        <div id="content" class="grid grid-3">
+          <article class="card">
+            <h3>Video hướng dẫn miễn phí</h3>
+            <p>Học theo playlist YouTube, có thể xem lại bất cứ lúc nào.</p>
+          </article>
+          <article class="card">
+            <h3>Danh sách câu hỏi theo dạng MOS</h3>
+            <p>Gồm 91/109 câu hỏi kiểu MOS và 18 câu thực hành để luyện thêm.</p>
+          </article>
+          <article class="card">
+            <h3>Thực hành trực tiếp trên Excel</h3>
+            <p>Không chỉ xem lý thuyết, bạn sẽ tự thao tác để nhớ cách làm.</p>
+          </article>
+          <article class="card">
+            <h3>Luyện đề thi thử</h3>
+            <p>Làm quen với nhịp làm bài và các dạng yêu cầu thường gặp.</p>
+          </article>
+          <article class="card">
+            <h3>Giải thích dễ hiểu</h3>
+            <p>Cách hướng dẫn được viết cho người Việt học trong môi trường tiếng Nhật.</p>
+          </article>
+          <article class="card">
+            <h3>Mục tiêu rõ ràng</h3>
+            <p>Đủ tự tin để đăng ký và bước vào kỳ thi MOS Excel Specialist tại Nhật.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="soft-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Danh sách video trong khóa học</h2>
+          <p>Khóa học đang được cập nhật dần trên YouTube. Hiện đã có video đến câu 90; các câu tiếp theo sẽ được bổ sung sau trong playlist.</p>
+        </div>
+
+        <div class="video-list">
+          <article class="video-item">
+            <div class="video-meta"><span>Video 1</span><span>Giới thiệu</span></div>
+            <div class="video-title">
+              <strong>Giới thiệu khóa học Excel 365 cho người Việt tại Nhật.</strong>
+              <span>Tổng quan cách học, mục tiêu khóa học và hướng chuẩn bị cho kỳ thi MOS Excel 365 Specialist.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=gcxzU19hiUc">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 2</span><span>Cơ bản</span></div>
+            <div class="video-title">
+              <strong>Giao diện Excel và thanh Ribbon.</strong>
+              <span>Làm quen với giao diện Excel 365 bản tiếng Nhật, các tab chính và cách tìm lệnh khi làm bài.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=OQQZ3zOh6R0">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 3</span><span>Câu 1-5</span></div>
+            <div class="video-title">
+              <strong>Câu 1-5: làm quen với workbook và các thao tác đầu tiên.</strong>
+              <span>Thực hành các yêu cầu cơ bản để bắt đầu quen với dạng câu hỏi MOS Excel.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=9__LNrjCYCw">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 4</span><span>Câu 6-20</span></div>
+            <div class="video-title">
+              <strong>Câu 6-20: thiết lập trang in và thuộc tính file.</strong>
+              <span>Luyện Page Setup, bố cục trang, thiết lập in và các thuộc tính thường gặp của workbook.</span>
+            </div>
+            <a class="button button-secondary" href="https://youtu.be/vznSLjld3K0?si=Pz0ZOtK-QRLzmP-a">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 5</span><span>Câu 21-26</span></div>
+            <div class="video-title">
+              <strong>Câu 21-26: comment, memo và kiểm tra nội dung.</strong>
+              <span>Thực hành ghi chú, nhận xét và các thao tác kiểm tra nội dung trong file Excel.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=NF2elmuDU2g">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 6</span><span>Câu 27-32</span></div>
+            <div class="video-title">
+              <strong>Câu 27-32: thao tác với ô và vùng dữ liệu.</strong>
+              <span>Luyện các thao tác trong chương Cell, giúp bạn quen với cách chỉnh và xử lý vùng dữ liệu.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=EBuc_VeQ6Mg">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 7</span><span>Câu 33-38</span></div>
+            <div class="video-title">
+              <strong>Câu 33-38: tiếp tục luyện thao tác với dữ liệu trong worksheet.</strong>
+              <span>Ôn thêm các yêu cầu liên quan đến cell, range và cách xử lý dữ liệu theo đề MOS.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=M54on8h8k4E">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 8</span><span>Câu 39-43</span></div>
+            <div class="video-title">
+              <strong>Câu 39-43: định dạng và xử lý dữ liệu nâng dần.</strong>
+              <span>Luyện thêm các thao tác định dạng, chỉnh dữ liệu và chuẩn bị chuyển sang nhóm câu tiếp theo.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=4ismJ93-mGU">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 9</span><span>Câu 44-48</span></div>
+            <div class="video-title">
+              <strong>Câu 44-48: đặt tên vùng, Sparklines và định dạng.</strong>
+              <span>Thực hành đặt tên vùng dữ liệu, tạo biểu đồ nhỏ trong ô và xử lý các yêu cầu định dạng.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=3NUHYUZ2430">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 10</span><span>Câu 49-54</span></div>
+            <div class="video-title">
+              <strong>Câu 49-54: công thức và hàm logic IF, MIN, MAX.</strong>
+              <span>Luyện viết công thức, dùng hàm logic và các hàm tính toán cơ bản thường gặp trong đề.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=7kHXL9xPXgU">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 11</span><span>Câu 54-58</span></div>
+            <div class="video-title">
+              <strong>Câu 54-58: thiết kế bảng, lọc và sắp xếp dữ liệu.</strong>
+              <span>Làm quen với Excel Table, định dạng bảng, filter, sort và các thao tác quản lý dữ liệu.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=Y70DXBslN3A">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 12</span><span>Câu 59-63</span></div>
+            <div class="video-title">
+              <strong>Câu 59-63: phép tính cơ bản, địa chỉ tuyệt đối và MAX.</strong>
+              <span>Thực hành công thức cơ bản, cách cố định ô bằng địa chỉ tuyệt đối và dùng hàm MAX.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=ESE0rjNDnW0">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 13</span><span>Câu 64-68</span></div>
+            <div class="video-title">
+              <strong>Câu 64-68: luyện tiếp nhóm công thức và xử lý dữ liệu.</strong>
+              <span>Tiếp tục thực hành các yêu cầu về công thức, tham chiếu và kiểm tra kết quả trong Excel.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=flhDBoJzT34">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 14</span><span>Câu 69-73</span></div>
+            <div class="video-title">
+              <strong>Câu 69-73: luyện hàm và thao tác theo yêu cầu đề.</strong>
+              <span>Làm thêm các câu dạng công thức để quen cách đọc yêu cầu tiếng Nhật và thao tác nhanh hơn.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=pUSsFeEDPAk">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 15</span><span>Câu 74-78</span></div>
+            <div class="video-title">
+              <strong>Câu 74-78: luyện công thức, tham chiếu và kiểm tra kết quả.</strong>
+              <span>Ôn lại cách dùng công thức trong bài thi, chú ý vùng dữ liệu và cách copy công thức đúng.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=-fehQt8Sf-Q">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 16</span><span>Câu 79-80</span></div>
+            <div class="video-title">
+              <strong>Câu 79-80: hoàn thiện nhóm công thức nâng dần.</strong>
+              <span>Thực hành các câu ngắn nhưng dễ sai nếu chưa quen cách tham chiếu và kiểm tra dữ liệu.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=uRAEcmTWZvY">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 17</span><span>Câu 81-85</span></div>
+            <div class="video-title">
+              <strong>Câu 81-85: kết thúc nhóm công thức và hàm.</strong>
+              <span>Luyện các câu cuối của phần công thức để củng cố thao tác trước khi chuyển sang biểu đồ.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=LVn9jaTUJiQ">Xem trên YouTube</a>
+          </article>
+
+          <article class="video-item">
+            <div class="video-meta"><span>Video 18</span><span>Câu 86-90</span></div>
+            <div class="video-title">
+              <strong>Câu 86-90: tạo và chỉnh biểu đồ.</strong>
+              <span>Thực hành biểu đồ cột, đường, tròn và các thao tác trình bày dữ liệu dễ gặp trong phần cuối bài.</span>
+            </div>
+            <a class="button button-secondary" href="https://www.youtube.com/watch?v=KBJXmBmmFJA">Xem trên YouTube</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid grid-2">
+        <div>
+          <div class="section-head">
+            <h2>Khóa học phù hợp với ai?</h2>
+          </div>
+          <ul class="check-list">
+            <li>Người Việt ở Nhật muốn lấy chứng chỉ MOS Excel 365.</li>
+            <li>Người muốn học lại Excel cơ bản để dùng trong công việc.</li>
+            <li>Người đang học ở trường hoặc học chuyên môn cần biết Excel.</li>
+            <li>Người tiếng Nhật chưa quá mạnh nhưng vẫn muốn chuẩn bị thi.</li>
+            <li>Người thích học chậm rãi, thực tế, không quá lý thuyết.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <h2>Bạn cần chuẩn bị gì?</h2>
+          </div>
+          <ul class="check-list">
+            <li>Máy tính Windows 10 hoặc Windows 11.</li>
+            <li>Microsoft Excel 365 bản tiếng Nhật.</li>
+            <li>Tinh thần luyện tập từng chút một.</li>
+            <li>Không khuyến khích dùng MacBook cho khóa học này.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="container split">
+        <div class="section-head">
+          <h2>Khóa học miễn phí, file luyện tập là phần hỗ trợ thêm</h2>
+          <p>Bạn không bắt buộc phải mua tài liệu. Nếu chỉ muốn học qua video YouTube, bạn vẫn có thể học bình thường.</p>
+        </div>
+        <div class="note-box">
+          Các gói file luyện tập chỉ dành cho bạn nào muốn có sẵn file, câu hỏi, giải thích tiếng Việt hoặc công cụ hỗ trợ để luyện nhanh và đỡ mất thời gian hơn.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Xem trước tài liệu và công cụ hỗ trợ</h2>
+          <p>Đây là hình ảnh thật từ file luyện tập và công cụ hỗ trợ học. Bấm vào ảnh để xem rõ hơn.</p>
+        </div>
+
+        <div class="preview-gallery">
+          <article class="preview-frame">
+            <button class="preview-button" type="button" data-fullscreen-image="images/general-image.png" aria-label="Xem lớn ảnh tổng quan file luyện tập">
+              <div class="preview-image">
+                <img src="images/general-image.png" alt="Ảnh tổng quan file luyện tập MOS Excel trong Excel">
+              </div>
+            </button>
+            <div class="preview-copy">
+              <h3>Màn hình luyện tập trong Excel</h3>
+              <p>Bạn luyện trực tiếp trong file Excel, xem yêu cầu tiếng Nhật và thao tác giống cách làm trong video.</p>
+            </div>
+          </article>
+
+          <div class="preview-thumbs">
+            <article class="preview-frame">
+              <button class="preview-button" type="button" data-fullscreen-image="images/learning-support-tool-1.png" aria-label="Xem lớn ảnh công cụ hỗ trợ học số 1">
+                <div class="preview-thumb-image">
+                  <img src="images/learning-support-tool-1.png" alt="Ảnh công cụ hỗ trợ học MOS Excel hiển thị câu hỏi">
+                </div>
+              </button>
+              <div class="preview-copy">
+                <h3>Xem câu hỏi</h3>
+                <p>Hiển thị câu hỏi tiếng Nhật ngay khi bạn đang luyện trong Excel.</p>
+              </div>
+            </article>
+
+            <article class="preview-frame">
+              <button class="preview-button" type="button" data-fullscreen-image="images/learning-support-tool-2.png" aria-label="Xem lớn ảnh công cụ hỗ trợ học số 2">
+                <div class="preview-thumb-image">
+                  <img src="images/learning-support-tool-2.png" alt="Ảnh công cụ hỗ trợ học MOS Excel có phần giải thích">
+                </div>
+              </button>
+              <div class="preview-copy">
+                <h3>Xem giải thích</h3>
+                <p>Khi gặp câu khó, bạn có thể mở phần giải thích tiếng Việt để hiểu cách làm.</p>
+              </div>
+            </article>
+
+            <article class="preview-frame">
+              <button class="preview-button" type="button" data-fullscreen-image="images/learning-support-tool-3.png" aria-label="Xem lớn ảnh công cụ hỗ trợ học số 3">
+                <div class="preview-thumb-image">
+                  <img src="images/learning-support-tool-3.png" alt="Ảnh công cụ hỗ trợ học MOS Excel với thao tác chuyển câu">
+                </div>
+              </button>
+              <div class="preview-copy">
+                <h3>Luyện từng câu</h3>
+                <p>Chuyển câu, đánh dấu xem lại và luyện theo nhịp học của riêng bạn.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="free-docs" class="soft-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Tài liệu miễn phí bạn có thể tải trước</h2>
+          <p>Trước khi mua bất kỳ gói hỗ trợ nào, bạn có thể tải các tài liệu miễn phí này để học thử và chuẩn bị từ vựng cơ bản.</p>
+        </div>
+
+        <div class="download-layout">
+          <div class="download-cover">
+            <img src="docs/cover.png" alt="Ảnh bìa tài liệu MOS Excel 365 học cùng Dan">
+          </div>
+
+          <div class="download-list">
+            <article class="download-card">
+              <h3>Phụ lục 1: Từ vựng tiếng Nhật về Excel</h3>
+              <p>Danh sách từ vựng thường gặp khi học và làm bài MOS Excel bằng giao diện tiếng Nhật.</p>
+              <a class="button button-secondary" href="docs/Phụ lục 1. Từ vựng tiếng Nhật về Excel.pdf" download>Tải PDF miễn phí</a>
+            </article>
+
+            <article class="download-card">
+              <h3>Phụ lục 2: Các phím tắt thường dùng trong Excel</h3>
+              <p>Một số phím tắt hữu ích để thao tác nhanh hơn khi luyện tập trên Windows.</p>
+              <a class="button button-secondary" href="docs/Phụ lục 2. Các phím tắt thường dùng trong Excel.pdf" download>Tải PDF miễn phí</a>
+            </article>
+
+            <article class="download-card">
+              <h3>Phụ lục 3: 109 câu hỏi lý thuyết - thực hành</h3>
+              <p>Tài liệu tổng quan giúp bạn nắm cấu trúc các câu hỏi trước khi học theo video.</p>
+              <a class="button button-secondary" href="docs/Phụ lục 3. 109 câu hỏi lý thuyết - thực hành.pdf" download>Tải PDF miễn phí</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="container">
+        <div class="section-head">
+          <h2>Chọn gói phù hợp với cách học của bạn</h2>
+          <p>Cả ba gói đều là tài liệu hỗ trợ. Bạn có thể bắt đầu miễn phí trước, rồi quay lại chọn gói khi thật sự cần.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <div class="price-top">
+              <div class="badge-row"></div>
+              <h3>Basic</h3>
+              <p>Chỉ cần file luyện tập</p>
+              <div class="price">990 <span>JPY</span></div>
+            </div>
+            <div class="plan-section">
+              <div class="plan-section-title">Phù hợp với</div>
+              <ul class="check-list">
+                <li>Người đã biết Excel cơ bản.</li>
+                <li>Người chỉ cần file để luyện theo video.</li>
+              </ul>
+            </div>
+            <div class="plan-section">
+              <div class="plan-section-title">Bao gồm</div>
+              <ul class="check-list">
+                <li>6 file Excel luyện tập.</li>
+                <li>5 đề thi thử.</li>
+                <li>PDF danh sách câu hỏi.</li>
+              </ul>
+            </div>
+            <a class="button button-secondary" href="#contact">Chọn Basic</a>
+          </article>
+
+          <article class="price-card featured">
+            <div class="price-top">
+              <div class="badge-row">
+                <span class="badge">Phù hợp cho đa số người mới học</span>
+              </div>
+              <h3>Premium</h3>
+              <p>Muốn hiểu rõ từng câu</p>
+              <div class="price">1,490 <span>JPY</span></div>
+            </div>
+            <div class="plan-section">
+              <div class="plan-section-title">Phù hợp với</div>
+              <ul class="check-list">
+                <li>Người mới học hoặc tiếng Nhật còn yếu.</li>
+                <li>Người muốn hiểu rõ từng câu, không chỉ làm theo.</li>
+              </ul>
+            </div>
+            <div class="plan-section">
+              <div class="plan-section-title">Bao gồm</div>
+              <ul class="check-list">
+                <li>Tất cả nội dung Basic.</li>
+                <li>Dịch câu hỏi Nhật → Việt.</li>
+                <li>Giải thích chi tiết cách làm.</li>
+              </ul>
+            </div>
+            <a class="button button-primary" href="#contact">Chọn Premium</a>
+          </article>
+
+          <article class="price-card">
+            <div class="price-top">
+              <div class="badge-row"></div>
+              <h3>Pro</h3>
+              <p>Học nhanh hơn, ít mệt hơn</p>
+              <div class="price">2,990 <span>JPY</span></div>
+            </div>
+            <div class="plan-section">
+              <div class="plan-section-title">Phù hợp với</div>
+              <ul class="check-list">
+                <li>Người muốn học thuận tiện và tiết kiệm thời gian hơn.</li>
+                <li>Người muốn có công cụ hỗ trợ khi luyện tập.</li>
+              </ul>
+            </div>
+            <div class="plan-section">
+              <div class="plan-section-title">Bao gồm</div>
+              <ul class="check-list">
+                <li>Tất cả nội dung Premium.</li>
+                <li>VBA Tool hỗ trợ học MOS Excel.</li>
+                <li>Xem câu hỏi và giải thích thuận tiện hơn.</li>
+              </ul>
+            </div>
+            <a class="button button-secondary" href="#contact">Chọn Pro</a>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="soft-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Liên hệ mua file luyện tập</h2>
+          <p>Nếu bạn muốn mua Basic, Premium hoặc Pro, hãy nhắn cho Dan tên gói bạn muốn chọn. Bạn vẫn có thể học miễn phí trên YouTube trước rồi liên hệ sau cũng được.</p>
+        </div>
+
+        <div class="contact-note">
+          <strong>Liên hệ mua file luyện tập:</strong>
+          <p>Vui lòng liên hệ Dan qua Zalo hoặc email. Thông tin liên hệ được ẩn mặc định để hạn chế spam.</p>
+
+          <div class="contact-actions" aria-label="Thông tin liên hệ">
+            <div class="contact-reveal">
+              <span class="contact-label">Zalo</span>
+              <span class="contact-value" data-contact-output="zalo">Ẩn để hạn chế spam</span>
+              <button class="button button-secondary" type="button" data-reveal-contact data-contact-type="zalo">Hiện Zalo</button>
+            </div>
+
+            <div class="contact-reveal">
+              <span class="contact-label">Email</span>
+              <span class="contact-value" data-contact-output="email">Ẩn để hạn chế spam</span>
+              <button class="button button-secondary" type="button" data-reveal-contact data-contact-type="email">Hiện email</button>
+            </div>
+          </div>
+
+          <!-- Nếu đổi thông tin liên hệ, sửa các mảnh dữ liệu trong phần script ở cuối file. -->
+        </div>
+      </div>
+    </section>
+
+    <section id="study">
+      <div class="container split">
+        <div class="section-head">
+          <h2>Cách học đề xuất</h2>
+          <p>Không cần học vội. Bạn chỉ cần đi từng bước, làm lại những câu chưa chắc và để tay quen dần với thao tác trong Excel.</p>
+        </div>
+
+        <ol class="steps">
+          <li>Xem video theo thứ tự trong playlist.</li>
+          <li>Mở file Excel và làm theo từng câu.</li>
+          <li>Với câu nào khó, đọc phần giải thích tiếng Việt nếu có.</li>
+          <li>Sau khi quen thao tác, thử làm lại không xem hướng dẫn.</li>
+          <li>Cuối cùng luyện đề thi thử trong thời gian quy định.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="faq" class="soft-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Câu hỏi thường gặp</h2>
+        </div>
+
+        <div class="faq">
+          <article class="faq-item is-open">
+            <button class="faq-question" type="button" aria-expanded="true">
+              <span>Khóa học có miễn phí thật không?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Có. Video học trên YouTube là miễn phí. Bạn chỉ mua file luyện tập nếu cảm thấy cần.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Tiếng Nhật yếu có học được không?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Có thể học được, nhưng nên có nền tảng khoảng N3 trở lên sẽ dễ theo hơn vì bài thi thật dùng giao diện và câu hỏi tiếng Nhật.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Dùng MacBook học được không?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Không khuyến khích. Khóa học và bài thi MOS Excel ở Nhật phù hợp hơn với Windows và Excel 365 bản tiếng Nhật.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Nếu chưa biết Excel nhiều thì nên chọn gói nào?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Nếu mới học hoặc tiếng Nhật còn yếu, Premium sẽ dễ học hơn vì có giải thích tiếng Việt. Nếu muốn có thêm công cụ hỗ trợ học thì chọn Pro.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Có bắt buộc mua file không?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Không. Bạn có thể học miễn phí qua YouTube. File luyện tập chỉ giúp việc thực hành thuận tiện hơn.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <div class="section-head">
+          <h2>Bắt đầu học miễn phí trước, cần file thì mua sau cũng được</h2>
+          <p>Bạn có thể bắt đầu bằng playlist YouTube miễn phí. Khi nào muốn luyện tập nghiêm túc hơn, hãy chọn gói file phù hợp với cách học của mình.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button button-primary" href="https://www.youtube.com/playlist?list=PL4TdnaJfJVapdLZn9W_fpwvWffs1cn6sD">Xem playlist YouTube</a>
+          <a class="button button-secondary" href="#packages">Xem gói hỗ trợ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">Dhouse Data</div>
+        <p>Khóa học MOS Excel 365 Specialist cho người Việt ở Nhật</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.youtube.com/playlist?list=PL4TdnaJfJVapdLZn9W_fpwvWffs1cn6sD">YouTube</a>
+        <a href="#contact">Liên hệ</a>
+        <a href="#packages">Gói hỗ trợ</a>
+        <!-- Thay các liên kết footer nếu bạn có trang liên hệ hoặc trang sản phẩm riêng. -->
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="#top" aria-label="Quay lại đầu trang">↑</a>
+
+  <div class="image-modal" aria-hidden="true" role="dialog" aria-label="Xem ảnh lớn">
+    <button class="modal-close" type="button" aria-label="Đóng ảnh">×</button>
+    <button class="modal-nav modal-prev" type="button" aria-label="Xem ảnh trước">‹</button>
+    <img src="" alt="">
+    <button class="modal-nav modal-next" type="button" aria-label="Xem ảnh tiếp theo">›</button>
+    <div class="modal-count" aria-live="polite"></div>
+  </div>
+
+  <script>
+    const siteHeader = document.querySelector(".site-header");
+    const menuButton = document.querySelector(".menu-button");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const backToTop = document.querySelector(".back-to-top");
+
+    function setMenuOpen(isOpen) {
+      mobileNav.classList.toggle("is-open", isOpen);
+      menuButton.classList.toggle("is-open", isOpen);
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      document.body.classList.toggle("is-locked", imageModal.classList.contains("is-open"));
+    }
+
+    menuButton.addEventListener("click", () => {
+      setMenuOpen(!mobileNav.classList.contains("is-open"));
+    });
+
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        setMenuOpen(false);
+      });
+    });
+
+    function getScrollOffset() {
+      const headerHeight = siteHeader ? siteHeader.getBoundingClientRect().height : 70;
+      return Math.ceil(headerHeight + 18);
+    }
+
+    function getAnchorTarget(target) {
+      return target.querySelector(".section-head") || target;
+    }
+
+    function scrollToHash(hash, updateUrl = true) {
+      if (!hash || hash === "#") return;
+
+      if (hash === "#top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (updateUrl) history.pushState(null, "", hash);
+        return;
+      }
+
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      const anchorTarget = getAnchorTarget(target);
+      const targetTop = anchorTarget.getBoundingClientRect().top + window.pageYOffset - getScrollOffset();
+      window.scrollTo({ top: Math.max(0, Math.round(targetTop)), behavior: "smooth" });
+
+      if (updateUrl) {
+        history.pushState(null, "", hash);
+      }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const hash = link.getAttribute("href");
+        if (!hash || hash === "#") return;
+
+        const target = document.querySelector(hash);
+        if (!target && hash !== "#top") return;
+
+        event.preventDefault();
+        setMenuOpen(false);
+        setTimeout(() => scrollToHash(hash), 120);
+      });
+    });
+
+    window.addEventListener("load", () => {
+      if (window.location.hash) {
+        setTimeout(() => scrollToHash(window.location.hash, false), 0);
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("is-visible", window.scrollY > 520);
+    }, { passive: true });
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const isOpen = item.classList.toggle("is-open");
+        button.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    const contactParts = {
+      zalo: ["076", "783", "2313"],
+      email: ["sales", "dhousedata", "com"]
+    };
+
+    document.querySelectorAll("[data-reveal-contact]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const type = button.dataset.contactType;
+        const output = document.querySelector(`[data-contact-output="${type}"]`);
+
+        if (type === "email") {
+          const email = `${contactParts.email[0]}@${contactParts.email[1]}.${contactParts.email[2]}`;
+          output.innerHTML = `<a href="mailto:${email}">${email}</a>`;
+          button.textContent = "Đã hiện email";
+        }
+
+        if (type === "zalo") {
+          const zalo = contactParts.zalo.join("-");
+          const zaloUrl = `https://zalo.me/${contactParts.zalo.join("")}`;
+          output.innerHTML = `<a href="${zaloUrl}">${zalo}</a>`;
+          button.textContent = "Đã hiện Zalo";
+        }
+
+        button.disabled = true;
+      });
+    });
+
+    const imageModal = document.querySelector(".image-modal");
+    const modalImage = imageModal.querySelector("img");
+    const modalClose = imageModal.querySelector(".modal-close");
+    const modalPrev = imageModal.querySelector(".modal-prev");
+    const modalNext = imageModal.querySelector(".modal-next");
+    const modalCount = imageModal.querySelector(".modal-count");
+    const galleryButtons = Array.from(document.querySelectorAll("[data-fullscreen-image]"));
+    let currentImageIndex = 0;
+
+    function showImage(index) {
+      currentImageIndex = (index + galleryButtons.length) % galleryButtons.length;
+      const button = galleryButtons[currentImageIndex];
+      const img = button.querySelector("img");
+      modalImage.src = button.dataset.fullscreenImage;
+      modalImage.alt = img ? img.alt : "Ảnh xem trước";
+      modalCount.textContent = `${currentImageIndex + 1} / ${galleryButtons.length}`;
+    }
+
+    function closeImageModal() {
+      imageModal.classList.remove("is-open");
+      imageModal.setAttribute("aria-hidden", "true");
+      modalImage.src = "";
+      modalImage.alt = "";
+      document.body.classList.remove("is-locked");
+    }
+
+    galleryButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        showImage(index);
+        imageModal.classList.add("is-open");
+        imageModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("is-locked");
+      });
+    });
+
+    modalClose.addEventListener("click", closeImageModal);
+    modalPrev.addEventListener("click", () => showImage(currentImageIndex - 1));
+    modalNext.addEventListener("click", () => showImage(currentImageIndex + 1));
+
+    imageModal.addEventListener("click", (event) => {
+      if (event.target === imageModal) {
+        closeImageModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        closeImageModal();
+      }
+
+      if (imageModal.classList.contains("is-open") && event.key === "ArrowLeft") {
+        showImage(currentImageIndex - 1);
+      }
+
+      if (imageModal.classList.contains("is-open") && event.key === "ArrowRight") {
+        showImage(currentImageIndex + 1);
+      }
+    });
+  </script>
+</body>
+</html>
